@@ -14,7 +14,7 @@
   "minimum-stability": "dev",
   "require": {
     "php" : ">=5.5",
-    "xcache":">=3.*"
+    "xcache":"3.2.0"
   },
   "autoload":{
     "psr-4":{
