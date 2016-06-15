@@ -1,0 +1,28 @@
+{
+  "name":"nsc/xcache",
+  "version":"1.0.0",
+  "description":"xcache",
+  "type": "library",
+  "keywords":["xcache"],
+  "homepage":"https://github.com/nscgotomydream/nscer",
+  "authors": [
+    {
+      "name": "nscgotomydream",
+      "email": "18810487612@163.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php" : ">=5.4"
+  },
+  "autoload":{
+    "psr-4":{
+      "Nsc\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
