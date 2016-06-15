@@ -14,10 +14,14 @@ $a = 'nsc';
 $arr = array(1,2,3,4,5,6);
 $arr2 = array(7,8,9);
 $xcache->set($a,$arr);
-$xcache->inc($a,$arr2);
+//$xcache->inc($a,$arr2);
+//var_dump($xcache->get($a));
+$xcache->dec($a,6);
 var_dump($xcache->get($a));
 //字符串
 $b = 'ceshi';
 $xcache->set($b,'abcd');
 $xcache->inc($b,'efg');
+var_dump($xcache->get($b));
+$xcache->dec($b,'fg');
 var_dump($xcache->get($b));

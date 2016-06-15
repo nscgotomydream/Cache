@@ -62,7 +62,15 @@ class Xcache implements XcacheInterface
         $primaryValue = $this->get($key);
         if((is_int($value)||is_integer($value))&&is_int($primaryValue))xcache_dec($key,$value,$expire);
         if(is_string($value)&&is_string($primaryValue)){
-            //strpos($primaryValue,$value)?
+            if(strpos($primaryValue,$value)){
+                $arr = explode($value,$primaryValue);
+                $newValue = "";
+                foreach($arr as $v){
+                    $newValue.=$v;
+                }
+                $this->set($key,$newValue,$expire);
+            }
+            return;
         }
         if(is_array($primaryValue)&&in_array($value,$primaryValue)){
             $arr = array_keys($primaryValue,$value);
@@ -70,6 +78,7 @@ class Xcache implements XcacheInterface
             foreach($arr as $v){
                 unset($primaryValue[$v]);
             }
+            $this->set($key,$primaryValue,$expire);
         }
         return;
     }
