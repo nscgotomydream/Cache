@@ -1,6 +1,5 @@
 <?php
-include("../src/Xcache/XcacheInterface.php");
-include("../src/Xcache/Xcache.php");
+include("../vendor/autoload.php");
 
 $xcache = \Nsc\Xcache\Xcache::getInstance();
 $a = 'nsc';
