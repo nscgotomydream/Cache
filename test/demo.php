@@ -1,6 +1,6 @@
 <?php
-include("../src/Xcache/XcacheInterface.php");
-include("../src/Xcache/Xcache.php");
+include("../src/xcache/XcacheInterface.php");
+include("../src/xcache/Xcache.php");
 
 $xcache = \Nsc\Xcache\Xcache::getInstance();
 $a = 'nsc';

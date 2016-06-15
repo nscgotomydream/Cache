@@ -5,8 +5,8 @@
  * Date: 2016-06-15
  * Time: 14:25
  */
-include("../src/Xcache/XcacheInterface.php");
-include("../src/Xcache/Xcache.php");
+include("../src/xcache/XcacheInterface.php");
+include("../src/xcache/Xcache.php");
 
 $xcache = \Nsc\Xcache\Xcache::getInstance();
 $a = 'nsc';

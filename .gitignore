@@ -50,5 +50,5 @@ Temporary Items
 .gitignore.bak
 .svn
 .idea
-XCache
+
 vendor
