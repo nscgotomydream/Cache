@@ -1,6 +1,6 @@
 <?php
-include("../src/xcache/XcacheInterface.php");
-include("../src/xcache/Xcache.php");
+include("../src/Xcache/XcacheInterface.php");
+include("../src/Xcache/Xcache.php");
 
 $xcache = \Nsc\Xcache\Xcache::getInstance();
 $a = 'nsc';
@@ -12,10 +12,10 @@ $xcache->set($a,'adgfge');
 $xcache->set('arr',$array);
 $xcache->set('1',2335);
 $xcache->inc($a,5);
-//var_dump($xcache->get($a));
-//$xcache->assign($a);
-//$xcache->delete($a);
-//$xcache->clear(1);
+//var_dump($Xcache->get($a));
+//$Xcache->assign($a);
+//$Xcache->delete($a);
+//$Xcache->clear(1);
 var_dump($xcache->get('1'));
 var_dump($xcache->get($a));
 var_dump($xcache->get('arr'));
