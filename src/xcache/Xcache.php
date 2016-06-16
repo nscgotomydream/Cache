@@ -60,7 +60,9 @@ class Xcache implements XcacheInterface
         if(!$this->exists($key))return;
         $expire = $expire?:$this->expire;
         $primaryValue = $this->get($key);
+        //输入int
         if((is_int($value)||is_integer($value))&&is_int($primaryValue))xcache_dec($key,$value,$expire);
+        //输入字符串
         if(is_string($value)&&is_string($primaryValue)){
             if(strpos($primaryValue,$value)){
                 $arr = explode($value,$primaryValue);
@@ -73,11 +75,17 @@ class Xcache implements XcacheInterface
             return;
         }
         if(is_array($primaryValue)&&in_array($value,$primaryValue)){
-            $arr = array_keys($primaryValue,$value);
-            if(empty($arr))return;
-            foreach($arr as $v){
-                unset($primaryValue[$v]);
+            $arrValue = array_keys($primaryValue,$value);
+            if($arrValue){             //输入数组的值
+                foreach($arrValue as $v){
+                    unset($primaryValue[$v]);
+                }
             }
+            $arrKey = array_key_exists($value,$primaryValue);
+            if($arrKey) {     //输入数组的键
+                unset($primaryValue[$value]);
+            }
+            if(empty($arrValue)&&!$arrKey)return;
             $this->set($key,$primaryValue,$expire);
         }
         return;
