@@ -2,8 +2,7 @@
 include("../vendor/autoload.php");
 
    $config = [
-       'ENABLE' => 1,
-        'GROUP'  => 'ceShi'
+       'GROUP'  => 'ceShi'
         ];
 
 $xcache = \Nsc\cache\Cache::getInstance($config);

@@ -27,8 +27,7 @@ Install nsc\xcache using Composer.
 ## Config
 ```
 $config = [
-       'ENABLE' => 1,
-        'GROUP'  => 'ceShi',
+       'GROUP'  => 'ceShi',
         ];
 ```
 
