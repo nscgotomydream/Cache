@@ -26,13 +26,7 @@ class Cache implements CacheInterface
         $this->_config = $config;
         if(!$this->_config['ENABLE']) return null;
         if(empty($config)) {
-            $config['SERVER'] = [
-                ['127.0.0.1', 11211]
-            ];
             $config['GROUP'] = 'tag';
-        }
-        foreach($config['SERVER'] as $conf) {
-            call_user_func_array(array(self::$_instance, 'addServer'), $conf);
         }
         $this->group = $config['GROUP'];
         $this->ver = intval( $this->get($this->group.'_ver') );
