@@ -1,5 +1,5 @@
-# Xcache
-Xcache connects and manages database based on application programming interface (**API**)
+# Cache
+Cache connects and manages database based on application programming interface (**API**)
 
 ## Highlights
 
@@ -12,17 +12,17 @@ Xcache connects and manages database based on application programming interface 
 
 You need:
 
-- **PHP >= 5.4** , but the latest stable version of PHP is recommended
+- **PHP >= 5.5** , but the latest stable version of PHP is recommended
 
 to use the library.
 
--**Xcache>=3.0.0**
+-**Xcache>=3.1.0**
 
 ## Install
 
-Install nsc\xcache using Composer.
+Install nsc\cache using Composer.
 
-    $ composer require nsc/xcache
+    $ composer require nsc/cache
 
 ## Config
 ```
@@ -34,8 +34,8 @@ $config = [
 ## Basic Usage
 
     include("../vendor/autoload.php");
-    $xcache = \Nsc\cache\Cache::getInstance($config);
+    $cache = \Nsc\cache\Cache::getInstance($config);
     $a = 'nsc';
     $arr = array(1,2,3,4,5,6);
-    $xcache->set($a,$arr);
-    var_dump($xcache->get($a));
+    $cache->set($a,$arr);
+    var_dump($cache->get($a));
