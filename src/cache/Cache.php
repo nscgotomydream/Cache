@@ -6,7 +6,7 @@
  * Time: 16:26
  */
 
-namespace Nsc\cache;
+namespace Nsc\Cache;
 
 
 class Cache implements CacheInterface

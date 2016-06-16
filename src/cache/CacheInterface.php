@@ -6,7 +6,7 @@
  * Time: 10:23
  */
 
-namespace Nsc\cache;
+namespace Nsc\Cache;
 
 
 interface CacheInterface
@@ -44,7 +44,7 @@ interface CacheInterface
      * delete
      *
      * @param mixed $key
-     * @return void
+     * @return boolean
      */
     public function delete($key);
     /**
@@ -52,7 +52,7 @@ interface CacheInterface
      *
      * @param mixed $key
      * @param int $value
-     * @return boolean
+     * @return void
      */
     public function dec($key, $value = 1, $expire = null);
     /**
