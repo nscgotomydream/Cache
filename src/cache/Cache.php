@@ -64,17 +64,6 @@ class Cache implements CacheInterface
         return xcache_isset($this->group.'_'.$this->ver.'_'.$key);
     }
     /**
-     * clearOne  delete key
-     *
-     * @param mixed $key
-     * @return void
-     */
-    public function clearOne($key)
-    {
-        if(!$this->_config['ENABLE']) return null;
-        xcache_unset($this->group.'_'.$this->ver.'_'.$key);
-    }
-    /**
      * dec
      *
      * @param mixed $key

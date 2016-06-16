@@ -41,13 +41,6 @@ interface CacheInterface
      */
     public function exists($key);
     /**
-     * clearOne
-     *
-     * @param mixed $key
-     * @return boolean
-     */
-    public function clearOne($key);
-    /**
      * replace
      *
      * @param mixed $key
