@@ -4,7 +4,7 @@
   "description":"xcache",
   "type": "library",
   "keywords":["xcache"],
-  "homepage":"https://github.com/nscgotomydream/Xcache",
+  "homepage":"https://github.com/nscgotomydream/PhpCache",
   "authors": [
     {
       "name": "nscgotomydream",
