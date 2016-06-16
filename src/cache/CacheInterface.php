@@ -6,10 +6,10 @@
  * Time: 10:23
  */
 
-namespace Nsc\Xcache;
+namespace Nsc\cache;
 
 
-interface XcacheInterface
+interface CacheInterface
 {
     /**
      * version
@@ -41,17 +41,18 @@ interface XcacheInterface
      */
     public function exists($key);
     /**
-     * assign   replace   unset
+     * clearOne
      *
      * @param mixed $key
      * @return boolean
      */
-    public function assign($key);
+    public function clearOne($key);
     /**
      * replace
      *
      * @param mixed $key
      * @param mixed $value
+     * @param mixed $expire
      * @return void
      */
     public function replace($key,$value,$expire = null);
@@ -69,7 +70,7 @@ interface XcacheInterface
      * @param int $value
      * @return boolean
      */
-    public function dec($key, $value, $expire = null);
+    public function dec($key, $value = 1, $expire = null);
     /**
      * set
      *
@@ -77,7 +78,7 @@ interface XcacheInterface
      * @param mixed $value
      * @return void
      */
-    public function inc($key, $value, $expire = null);
+    public function inc($key, $value = 1, $expire = null);
     /**
      * clear
      *
@@ -85,7 +86,7 @@ interface XcacheInterface
      * @param int $key
      * @return void
      */
-    public function clear($type,$key="-1");
+    public function clear();
     /**
      * close
      *

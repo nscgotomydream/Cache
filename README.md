@@ -24,10 +24,18 @@ Install nsc\xcache using Composer.
 
     $ composer require nsc/xcache
 
+## Config
+```
+$config = [
+       'ENABLE' => 1,
+        'GROUP'  => 'ceShi',
+        'SERVER' => ''];
+```
+
 ## Basic Usage
 
     include("../vendor/autoload.php");
-    $xcache = \Nsc\Xcache\Xcache::getInstance();
+    $xcache = \Nsc\cache\Cache::getInstance($config);
     $a = 'nsc';
     $arr = array(1,2,3,4,5,6);
     $xcache->set($a,$arr);

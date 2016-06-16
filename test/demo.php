@@ -1,7 +1,15 @@
 <?php
 include("../vendor/autoload.php");
 
-$xcache = \Nsc\Xcache\Xcache::getInstance();
+   $config = [
+       'ENABLE' => 1,
+        'GROUP'  => 'ceShi',
+        'SERVER' => [
+            ['127.0.0.1', 11211]
+            ]
+        ];
+
+$xcache = \Nsc\cache\Cache::getInstance($config);
 $a = 'nsc';
 if($xcache->exists($a)){
     var_dump($xcache->get($a));
@@ -9,12 +17,19 @@ if($xcache->exists($a)){
 $array = array(1,2,3,4,5,6,7,8);
 $xcache->set($a,'adgfge');
 $xcache->set('arr',$array);
-$xcache->set('1',2335);
-$xcache->inc($a,5);
-//var_dump($Xcache->get($a));
-//$Xcache->assign($a);
-//$Xcache->delete($a);
-//$Xcache->clear(1);
+$xcache->set('1',12);
+//var_dump($cache->get($a));
+//$cache->assign($a);
+//$cache->delete($a);
+//$cache->clear(1);
+$xcache->inc('1');
+$xcache->dec('1',2);
+$xcache->replace($a,'cfg');
+$xcache->delete($a);
+var_dump($xcache->get('1'));
+var_dump($xcache->get($a));
+var_dump($xcache->get('arr'));
+$xcache->clear();
 var_dump($xcache->get('1'));
 var_dump($xcache->get($a));
 var_dump($xcache->get('arr'));
