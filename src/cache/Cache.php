@@ -11,17 +11,16 @@ namespace Nsc\cache;
 
 class Cache implements CacheInterface
 {
-    private static $_instance = null;
     private     $ver        = 0;
     private     $_config    = array();
     public      $group      = '';
-    private $expire = 1800;
+    private     $expire = 1800;
     /**
      * default save time
      * @access private
      * @var int
      **/
-    private function __construct($config = array())
+    public function __construct($config = array())
     {
         $this->_config = $config;
         if(empty($config)) {
@@ -29,21 +28,6 @@ class Cache implements CacheInterface
         }
         $this->group = $config['GROUP'];
         $this->ver = intval( $this->get($this->group.'_ver') );
-    }
-    private function __clone(){}
-    /**
-     * getInstance
-     *
-     * @static
-     * @param array $config
-     * @access public
-     * @return object XCache instance
-     */
-    public static function getInstance($config = array()){
-        if(!(self::$_instance instanceof self)){
-            self::$_instance = new self($config);
-        }
-        return self::$_instance;
     }
 
     public function set($key, $value, $expire = null)
@@ -90,11 +74,9 @@ class Cache implements CacheInterface
         xcache_inc($this->group.'_'.$this->ver.'_'.$key,$value,$expire);
     }
     /**
-     * clear  clearAlL   $type choose 1 or 0
+     * clear
      * I suggest you use caution with this one.
      *
-     * @param int $type
-     * @param int $key
      * @return void
      */
     public function clear()

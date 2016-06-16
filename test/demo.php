@@ -5,7 +5,7 @@ include("../vendor/autoload.php");
        'GROUP'  => 'ceShi'
         ];
 
-$xcache = \Nsc\cache\Cache::getInstance($config);
+$xcache = new \Nsc\cache\Cache($config);
 $a = 'nsc';
 if($xcache->exists($a)){
     var_dump($xcache->get($a));
@@ -20,7 +20,6 @@ $xcache->set('1',12);
 //$cache->clear(1);
 $xcache->inc('1');
 $xcache->dec('1',2);
-$xcache->replace($a,'cfg');
 $xcache->delete($a);
 var_dump($xcache->get('1'));
 var_dump($xcache->get($a));
