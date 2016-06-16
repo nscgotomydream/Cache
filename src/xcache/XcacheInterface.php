@@ -67,7 +67,7 @@ interface XcacheInterface
      *
      * @param mixed $key
      * @param int $value
-     * @return void
+     * @return boolean
      */
     public function dec($key, $value, $expire = null);
     /**

@@ -49,12 +49,24 @@ class Xcache implements XcacheInterface
     {
         return xcache_isset($key);
     }
-
+    /**
+     * assign  delete key
+     *
+     * @param mixed $key
+     * @return void
+     */
     public function assign($key)
     {
         xcache_unset($key);
     }
-
+    /**
+     * dec
+     *
+     * @param mixed $key
+     * @param mixed $value
+     * @param mixed $expire
+     * @return void
+     */
     public function dec($key, $value, $expire = null)
     {
         if(!$this->exists($key))return;
@@ -90,6 +102,14 @@ class Xcache implements XcacheInterface
         }
         return;
     }
+    /**
+     * inc  The same type to a merger or add
+     *
+     * @param mixed $key
+     * @param mixed $value
+     * @param mixed $expire
+     * @return void
+     */
     public function inc($key, $value, $expire = null)
     {
         if(!$this->exists($key))return;
@@ -100,6 +120,14 @@ class Xcache implements XcacheInterface
         if(is_array($value)&&is_array($primaryValue))$this->set($key,array_merge($primaryValue,$value),$expire);
         return;
     }
+    /**
+     * clear  clearAlL   $type choose 1 or 0
+     * I suggest you use caution with this one.
+     *
+     * @param int $type
+     * @param int $key
+     * @return void
+     */
     public function clear($type,$key="-1")
     {
         xcache_clear_cache($type,$key);
@@ -111,9 +139,20 @@ class Xcache implements XcacheInterface
         $this->assign($key);
         $this->set($key,$value,$expire);
     }
+    /**
+     * delete  Delete the specified key
+     *
+     * @param mixed $key
+     * @return boolean
+     */
     public function delete($key)
     {
-        $this->exists($key)?$this->assign($key):null;
+        $bool = false;
+        if($this->exists($key)){
+            $this->assign($key);
+            $bool = true;
+        }
+        return $bool;
     }
 
     public function version()
