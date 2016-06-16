@@ -41,15 +41,6 @@ interface CacheInterface
      */
     public function exists($key);
     /**
-     * replace
-     *
-     * @param mixed $key
-     * @param mixed $value
-     * @param mixed $expire
-     * @return void
-     */
-    public function replace($key,$value,$expire = null);
-    /**
      * delete
      *
      * @param mixed $key

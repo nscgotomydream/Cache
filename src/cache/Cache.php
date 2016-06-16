@@ -15,16 +15,15 @@ class Cache implements CacheInterface
     private     $ver        = 0;
     private     $_config    = array();
     public      $group      = '';
+    private $expire = 1800;
     /**
      * default save time
      * @access private
      * @var int
      **/
-    private $expire = 1800;
     private function __construct($config = array())
     {
         $this->_config = $config;
-        if(!$this->_config['ENABLE']) return null;
         if(empty($config)) {
             $config['GROUP'] = 'tag';
         }
@@ -49,18 +48,15 @@ class Cache implements CacheInterface
 
     public function set($key, $value, $expire = null)
     {
-        if(!$this->_config['ENABLE']) return null;
         $expire = $expire?:$this->expire;
         xcache_set($this->group.'_'.$this->ver.'_'.$key,$value,$expire);
     }
     public function get($key)
     {
-        if(!$this->_config['ENABLE']) return null;
         return xcache_get($this->group.'_'.$this->ver.'_'.$key);
     }
     public function exists($key)
     {
-        if(!$this->_config['ENABLE']) return null;
         return xcache_isset($this->group.'_'.$this->ver.'_'.$key);
     }
     /**
@@ -73,7 +69,6 @@ class Cache implements CacheInterface
      */
     public function dec($key, $value = 1, $expire = null)
     {
-        if(!$this->_config['ENABLE']) return null;
         $expire = $expire?:$this->expire;
         if(!$this->exists($key))return;
         if(!is_int($value))return;
@@ -89,7 +84,6 @@ class Cache implements CacheInterface
      */
     public function inc($key, $value =1, $expire = null)
     {
-        if(!$this->_config['ENABLE']) return null;
         $expire = $expire?:$this->expire;
         if(!$this->exists($key))return;
         if(!is_int($value))return;
@@ -105,17 +99,8 @@ class Cache implements CacheInterface
      */
     public function clear()
     {
-        if(!$this->_config['ENABLE']) return null;
         $this->ver = $this->ver + 1;
         $this->set($this->group.'_ver', $this->ver);
-    }
-
-    public function replace($key, $value, $expire = null)
-    {
-        if(!$this->_config['ENABLE']) return null;
-        $expire = $expire?:$this->expire;
-        xcache_unset($this->group.'_'.$this->ver.'_'.$key);
-        $this->set($key,$value,$expire);
     }
     /**
      * delete  Delete the specified key
@@ -125,7 +110,6 @@ class Cache implements CacheInterface
      */
     public function delete($key)
     {
-        if(!$this->_config['ENABLE']) return null;
         $bool = false;
         if($this->exists($key)){
             xcache_unset($this->group.'_'.$this->ver.'_'.$key);
@@ -140,7 +124,6 @@ class Cache implements CacheInterface
      */
     public function version()
     {
-        if(!$this->_config['ENABLE']) return null;
         return "1.0.0";
     }
 
@@ -150,7 +133,6 @@ class Cache implements CacheInterface
      */
     public function close()
     {
-        if(!$this->_config['ENABLE']) return null;
-        xcache_coverager_stop();
+        return null;
     }
 }
