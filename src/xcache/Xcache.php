@@ -155,13 +155,21 @@ class Xcache implements XcacheInterface
         return $bool;
     }
 
+    /**
+     * version  Do not implement the method
+     *
+     */
     public function version()
     {
 
     }
 
+    /**
+     * close  Do not implement the method
+     *
+     */
     public function close()
     {
-        // TODO: Implement close() method.
+        xcache_coverager_stop();
     }
 }
